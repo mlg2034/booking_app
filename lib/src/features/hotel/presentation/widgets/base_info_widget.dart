@@ -20,13 +20,12 @@ class _BaseHotelInfoState extends State<BaseHotelInfo> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: const BoxDecoration(
-        color: white,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(5),
-          bottomRight: Radius.circular(5),
-        ),
-      ),
+    decoration:const ShapeDecoration(
+color: Colors.white,
+shape: RoundedRectangleBorder(
+borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12) , bottomRight: Radius.circular(12) ),
+),
+),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

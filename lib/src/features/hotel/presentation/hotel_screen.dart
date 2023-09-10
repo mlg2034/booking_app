@@ -1,12 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test_application/src/features/hotel/presentation/widgets/base_info_widget.dart';
 import 'package:test_application/src/features/hotel/presentation/widgets/hotel_feature_widget.dart';
+import 'package:test_application/src/features/room/presentation/room_screen.dart';
 import 'package:test_application/src/ui_components/theme/app_colors.dart';
 import 'package:test_application/src/ui_components/theme/text_style.dart';
 import 'package:test_application/src/ui_components/widgets/custom_button.dart';
-import 'package:test_application/src/ui_components/widgets/custom_container.dart';
+import 'package:test_application/src/ui_components/widgets/custom_wrapper.dart';
 
 class HotelScreen extends StatefulWidget {
   const HotelScreen({super.key});
@@ -44,8 +43,12 @@ class _HotelScreenState extends State<HotelScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 12),
               child: Container(
-                decoration: BoxDecoration(
-                    color: white, borderRadius: BorderRadius.circular(5)),
+                decoration:  ShapeDecoration(
+color: Colors.white,
+shape: RoundedRectangleBorder(
+borderRadius: BorderRadius.circular(12 ),
+),
+),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -58,20 +61,7 @@ class _HotelScreenState extends State<HotelScreen> {
                           style: w500s22.copyWith(color: black),
                         ),
                       ),
-                      Wrap(
-                        direction: Axis.horizontal,
-                        spacing: 8.0,
-                        runSpacing: 8.0,
-                        children: hotelFeatures.map((feature) {
-                          return CustomContainer(
-                            childWidget: Text(
-                              feature,
-                              style: w500s18.copyWith(color: grey),
-                            ),
-                            color: lightGrey,
-                          );
-                        }).toList(),
-                      ),
+                      CustomWrapper(hotelFeatures: hotelFeatures),
                       Padding(
                         padding: const EdgeInsets.only(top: 12, bottom: 16),
                         child: Text(
@@ -79,16 +69,28 @@ class _HotelScreenState extends State<HotelScreen> {
                           style: w400s16.copyWith(color: black),
                         ),
                       ),
-                      HotelFeatureWidget(),
+                      HotelFeatureWidget(
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const RoomScreen(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-            CustomButtom(
-              childWidget: Text(
-                'К выбору номера',
-                style: w500s16.copyWith(color: white),
+            GestureDetector(
+              onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>RoomScreen())),
+              child: Padding(
+                padding: const EdgeInsets.only(top:12 , bottom: 28 , right: 16 , left: 16),
+                child: CustomButton(
+                  childWidget: Text(
+                    'К выбору номера',
+                    style: w500s16.copyWith(color: white),
+                  ),
+                ),
               ),
             ),
           ],
@@ -97,3 +99,4 @@ class _HotelScreenState extends State<HotelScreen> {
     );
   }
 }
+

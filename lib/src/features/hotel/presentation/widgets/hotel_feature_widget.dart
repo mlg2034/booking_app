@@ -4,8 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test_application/src/ui_components/theme/app_colors.dart';
 import 'package:test_application/src/ui_components/theme/text_style.dart';
 class HotelFeatureWidget extends StatelessWidget {
+  final Function() onTap;
   const HotelFeatureWidget({
-    super.key,
+    super.key, required this.onTap,
   });
 
   @override
