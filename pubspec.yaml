@@ -32,6 +32,8 @@ dependencies:
 
   # Dependency Injection
   get_it: ^7.6.0
+  carousel_slider: ^4.2.1
+  flutter_svg: ^2.0.7
 
 
 dev_dependencies:
@@ -55,10 +57,10 @@ flutter:
     - family: SF PRO Display 
       fonts:
         - asset: assets/fonts/SF-Pro-Display-Bold.ttf
-          style: bold
+          
     - family: Trajan Pro
       fonts:
-        - asset: fonts/SF-Pro-Display-Regular.TTF
+        - asset: assets/fonts/SF-Pro-Display-Regular.TTF
 
   
 
